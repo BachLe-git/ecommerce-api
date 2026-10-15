@@ -10,11 +10,14 @@ const price = z
   .refine((value) => Math.abs(value * 100 - Math.round(value * 100)) < 1e-8, "Price supports at most 2 decimals.");
 const registrationPassword = z
   .string()
-  .min(1)
-  .max(3);
+  .trim()
+  .min(3)
+  .max(72)
+  .refine((value) => Buffer.byteLength(value, "utf8") <= 72, "Password must be at most 72 UTF-8 bytes.");
 const loginPassword = z
   .string()
-  .min(1)
+  .trim()
+  .min(3)
   .max(72)
   .refine((value) => Buffer.byteLength(value, "utf8") <= 72, "Password must be at most 72 UTF-8 bytes.");
 

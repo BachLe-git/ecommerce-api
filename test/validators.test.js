@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { createOrderSchema, productCreateSchema, registerSchema } from "../src/validators.js";
 
-test("registration validates bounded username and passwords of at most 3 characters", () => {
+test("registration validates username and password length requirements", () => {
   assert.equal(
     registerSchema.safeParse({
       body: { username: "minh", password: "abc" },
@@ -19,7 +19,7 @@ test("registration validates bounded username and passwords of at most 3 charact
     registerSchema.safeParse({
       body: { username: "buyer", password: "abcd" },
     }).success,
-    false,
+    true,
   );
 });
 
