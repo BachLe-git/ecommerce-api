@@ -14,7 +14,6 @@ CREATE TABLE "Membership" (
 CREATE TABLE "User" (
     "uid" SERIAL NOT NULL,
     "username" VARCHAR(50) NOT NULL,
-    "fullname" VARCHAR(100) NOT NULL,
     "password" VARCHAR(255) NOT NULL,
     "roleid" INTEGER NOT NULL,
     "mid" INTEGER NOT NULL,
